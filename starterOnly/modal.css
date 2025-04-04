@@ -109,7 +109,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 }
 
@@ -166,7 +166,9 @@ main {
 }
 
 .bground {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -178,7 +180,6 @@ main {
 }
 
 .content {
-  margin: 5% auto;
   width: 100%;
   max-width: 520px;
   animation-name: modalopen;
@@ -515,6 +516,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 
 .copyrights {
@@ -560,13 +562,15 @@ footer {
   }
 
   .hero-headline {
-    font-size: 4.5rem;
+    /* font-size: 4.5rem; */
+    font-size: 40px;
     white-space: normal;
   }
 
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
+    font-size: 13px;
   }
 
   .hero-img img {
