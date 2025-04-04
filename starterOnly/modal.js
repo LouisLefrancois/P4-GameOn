@@ -7,25 +7,25 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// éléments du DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 const form = document.getElementById("form");
 
-// launch modal event
+// ouvre le modal au clic sur le bouton "Je m'inscris"
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// fonction qui affiche le form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "flex";
 }
 
-// close modal event
+// ferme le modal au clic sur la croix
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// close modal form
+// fonction qui cache le form
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -104,8 +104,14 @@ function validate() {
   }
 
   // vérification de la quantité de tournois
-  if (quantity.value < 0 || quantity.value > 99) {
-    setError(quantity, "La quantité doit être entre 0 et 99.");
+  const quantityValue = parseInt(quantity.value, 10);
+
+  if (
+    quantity.value.trim() === "" ||
+    isNaN(quantityValue) ||
+    quantityValue < 0
+  ) {
+    setError(quantity, "Vous devez saisir une valeur numérique.");
     isValid = false;
   } else {
     clearError(quantity);
