@@ -10,9 +10,9 @@ function editNav() {
 // éléments du DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 const form = document.getElementById("form");
+const confirmationMessage = document.getElementById("confirmation-message");
 
 // ouvre le modal au clic sur le bouton "Je m'inscris"
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,6 +20,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // fonction qui affiche le form
 function launchModal() {
   modalbg.style.display = "flex";
+  form.reset();
+  confirmationMessage.style.display = "none";
+
+  form.style.display = "flex";
+  form.style.flexDirection = "column";
 }
 
 // ferme le modal au clic sur la croix
@@ -28,6 +33,7 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 // fonction qui cache le form
 function closeModal() {
   modalbg.style.display = "none";
+  confirmationMessage.style.display = "flex";
 }
 
 form.addEventListener("submit", (event) => {
@@ -35,19 +41,9 @@ form.addEventListener("submit", (event) => {
 
   if (validate()) {
     // afficher le message de confirmation
-    const confirmationMessage = document.getElementById("confirmation-message");
-    const success = document.getElementById("success");
-
     confirmationMessage.style.display = "flex";
 
-    // masquer tous les contenus du formulaire
-    const modalBody = document.querySelector(".modal-body");
-    modalBody.style.display = "flex";
-    modalBody.style.flexDirection = "column";
-    modalBody.innerHTML = success.outerHTML; // remplace tout par le message
-
-    // reset les champs du formulaire après validation
-    form.reset();
+    form.style.display = "none";
   }
 });
 
